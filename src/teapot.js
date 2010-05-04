@@ -241,8 +241,18 @@ var teapot = {
             authorClass : (tweet.getUserScreenName() === teapot.currentUser.screen_name) ?
                 "mytweet" : "othertweet",
             dateTime : teapot.formatDateTime(new Date(tweet.getCreatedAt()), true),
-            updateClass : (tweet.getId() === teapot.updatemarker) ? "updatemarker" : ""
+            updateClass : (tweet.getId() === teapot.updatemarker) ? "updatemarker" : "",
+            hideClass : (teapot.isTweetHidden(tweet)) ? "hiddenTweet" : ""
         });        
+    },
+    
+    isTweetHidden : function(tweet){
+    	for (var checkString in teapot_settings.hide_strings){
+    		if (tweet.getText().indexOf(checkString) > -1){
+    			return true;
+    		}
+    	}
+    	return false;
     },
     
     formatDateTime : function(date, includeTime) {

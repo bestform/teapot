@@ -123,6 +123,10 @@ a:hover {
 	border-top:4px solid #e5e5e5;
 }
 
+.itemcontents.hiddenTweet {
+	display: none;
+}
+
 .avatar {
 	float:left;
 	padding-right:1em;
